@@ -1,10 +1,24 @@
-# Getting Started with Create React App
+# Launchy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi :)
+
+This project has been designed to pull information from https://api.spacexdata.com/v3/. This react project utilises Material UI for the 'UI' and redux for state management. As a special twist RxJS is used with redux-observables to manage side effects and transform data in a reactive functional way. The project attempts at delivering reasonably comprehensive test coverage.
+
+Naturally there's room for improvement all round especially in styling :). This project isn't complete :(
+
+Personally I've spent more time with enzyme, but recognise that perhaps the future is the testing-library so I've adopted that in this project.
+
+## Othert comments / questions
+
+I wonder if by launch name you meant mission name.
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn`
+
+Installs the node modules so that you can start, build and test the project
 
 ### `yarn start`
 
@@ -14,33 +28,46 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `yarn test --coverage`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner which calculates the test coverage and generates the coverage report
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Will build the project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Folder Architecture:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is a small project but still has enough components to utilise a domain folder structure. By abstracting out reuseable components, I have focused on 2 key component domains common and logs. The folder structure will be similar to the following:
 
-### `yarn eject`
+```
+components
+|  +-- Launches
+|     +-- launches.constants
+|     +-- launches.epic
+|     +-- launches.interfaces
+|     +-- launches.selectors
+|     +-- etc...
+|  +-- common
+|     +-- Modal
+|     +-- Table
+|     +-- Typography
++-- interfaces
++-- store
++-- styles
++-- etc...
+App.tsx
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I have index filename to reduce import filename paths.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## More time
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If I spent more time on this project, which I will undoubtable do just to clean it up. I would:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- improve the styling; perhaps add nicer theme
+- refactor and fix outstanding typescript, eliminate any
+- improve testing; cover the transition when the modal closes
+- improve accessibility
+- throw in husky and some git process improvements
+- add proper search by launch / mission name on the response with a debounce custom hook rather than by datagrid
